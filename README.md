@@ -8,3 +8,19 @@ Please submit your solution with the following
 
 It should take no more that 30 minutes to fix. 
 
+
+## Completed test
+**Screenshot**
+![alt text](./img1.png "Screenshot of working container")
+
+### Changes
+- Removed unnecessary curl apk package
+- Exposed ports `80` and `443`
+- Updated the Timezone in [main.go](main.go) to UTC
+
+## How To
+1. `docker build . -t spaceship-test:v1.0`
+
+2. `docker run -it -p 443:8080 spaceship-test:v1.0`
+
+3. `curl localhost:443`

@@ -13,4 +13,4 @@ RUN apk update && \
     rm -rf /var/cache/apk/*
 
 EXPOSE 80 443
-CMD ["./app"]
+ENTRYPOINT ["./app"]
