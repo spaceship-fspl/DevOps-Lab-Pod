@@ -22,6 +22,6 @@ It should take no more that 30 minutes to fix.
 ## How To
 1. `docker build . -t spaceship-test:v1.0`
 
-2. `docker run -it -p 443:8080 spaceship-test:v1.0`
+2. `docker run -p 443:8080 -p 80:8080 spaceship-test:v1.0`
 
 3. `curl localhost:443`
