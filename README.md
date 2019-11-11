@@ -14,6 +14,7 @@ It should take no more that 30 minutes to fix.
 ![alt text](./img1.png "Screenshot of working container")
 
 ### Changes
+- Removed `-o` options in go build command
 - Removed unnecessary curl apk package
 - Exposed ports `80` and `443`
 - Updated the Timezone in [main.go](main.go) to UTC
