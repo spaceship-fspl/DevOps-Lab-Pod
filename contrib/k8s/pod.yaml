@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: spaceship-devops-lab-pod
+  namespace: default
+  labels:
+    environment: lab
+    app: spaceship-devops-lab-pod
+spec:
+  containers:
+  - name: spaceship-devops-lab-pod
+    image: flaccid/spacecontainer
+    stdin: true
+    ports:
+    - name: httpd
+      containerPort: 8080
+      protocol: TCP
+  nodeSelector:

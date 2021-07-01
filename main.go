@@ -8,9 +8,9 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	loc, _ := time.LoadLocation("EST")
-	t := time.Now().In(loc).Format(time.RFC3339)
-	fmt.Fprintf(w, "Please submit a screen shot of this page with your solution %s! %v", r.URL.Path[1:], t)
+	loc := time.FixedZone("Est/EST", -5 * 60 * 60)
+	now := time.Now().In(loc)
+	fmt.Fprintf(w, "Please submit a screen shot of this page with your solution %s! %v", r.URL.Path[1:], now)
 }
 
 func main() {

@@ -1,16 +1,11 @@
 FROM golang:alpine as builder
-RUN mkdir /go/src/app
-ADD . /go/src/app/
 WORKDIR /go/src/app
-RUN go build -o app .
-RUN chmod +x app
+COPY main.go /go/src/app/
+RUN go mod init && \
+    go build -o /tmp/spaceship-devops-test
 
 FROM alpine
-COPY --from=builder /go/src/app/app /app
-RUN apk update && \
-    apk add ca-certificates && \
-    update-ca-certificates && \
-    rm -rf /var/cache/apk/* && \
-    apk add curl
-
-CMD ["/app"]
+RUN mkdir -p /opt/spaceship/bin
+COPY --from=builder /tmp/spaceship-devops-test /opt/spaceship/bin/
+EXPOSE 8080
+CMD ["/opt/spaceship/bin/spaceship-devops-test"]
